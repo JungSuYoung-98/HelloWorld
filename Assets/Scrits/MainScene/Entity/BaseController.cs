@@ -60,7 +60,7 @@ public class BaseController : MonoBehaviour
 
     private void Movment(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * 10;
         if (knockbackDuration > 0.0f)
         {
             direction *= 0.2f;
