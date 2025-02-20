@@ -25,14 +25,8 @@ public class BaseController : MonoBehaviour
 
     }
 
-    protected virtual void Start()
-    {
-
-    }
-
     protected virtual void Update()
     {
-        HandleAction();
         lookDirection = movementDirection.x != 0  || movementDirection.y != 0 ? new Vector2(movementDirection.x,movementDirection.y) : lookDirection;
         Rotate(lookDirection);
     }
@@ -45,11 +39,6 @@ public class BaseController : MonoBehaviour
         {
             knockbackDuration -= Time.fixedDeltaTime;
         }
-    }
-
-    protected virtual void HandleAction()
-    {
-
     }
 
     private void Look(Vector2 direction)

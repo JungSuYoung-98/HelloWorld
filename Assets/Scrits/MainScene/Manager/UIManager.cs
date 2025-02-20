@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
         UpdateScore();
     }
 
-    public void UpdateScore()
+    public void UpdateScore() // 메인게임 점수와 비행기 게임 점수 확인
     {
         if (GameManager.satae == GameManager.Satae.Plane)
         {

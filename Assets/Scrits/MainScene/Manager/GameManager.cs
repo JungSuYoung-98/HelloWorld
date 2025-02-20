@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum Satae
+    public enum Satae // 씬 상태
     {
         Main,
         Plane
@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        score = PlayerPrefs.GetInt(ScoreKey, 0);
+        score = PlayerPrefs.GetInt(ScoreKey, 0); // 점수 불러오기
     }
 
     private void Update()
     {
-        PlayerPrefs.SetInt(ScoreKey, score);
+        PlayerPrefs.SetInt(ScoreKey, score); // 점수 저장
     }
 }
    
