@@ -8,14 +8,17 @@ public class Player : MonoBehaviour
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
-    float deathCooldown = 0f;
 
     bool isFlap = false;
 
     public bool godMode = false;
 
+    PlaneManager planeManager = null;
+
     void Start()
     {
+        planeManager = PlaneManager.Instance;
+
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
 
@@ -32,26 +35,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (isDead)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (deathCooldown <= 0)
-            {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    // 게임 재시작
-                }
-            }
-            else
-            {
-                deathCooldown -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
                 isFlap = true;
-            }
         }
     }
 
@@ -86,6 +72,6 @@ public class Player : MonoBehaviour
 
         animator.SetInteger("IsDie", 1);
         isDead = true;
-        deathCooldown = 1f;
+        planeManager.GameOver();
     }
 }

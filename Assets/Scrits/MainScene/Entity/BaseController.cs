@@ -16,7 +16,7 @@ public class BaseController : MonoBehaviour
     private float knockbackDuration = 0.0f;
 
     protected AnimationHandler animationHandler;
-
+    UIManager UIManager;
 
     protected virtual void Awake()
     {

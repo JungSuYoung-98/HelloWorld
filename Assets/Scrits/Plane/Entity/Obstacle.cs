@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Obstacle : MonoBehaviour
@@ -16,6 +14,13 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4f;
 
+    PlaneManager planeManager;
+
+    public void Start()
+    {
+        planeManager = PlaneManager.Instance;
+    }
+
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
     {
         float holeSize = Random.Range(holeSizeMin, holeSizeMax);
@@ -29,6 +34,13 @@ public class Obstacle : MonoBehaviour
         transform.position = placePosition;
 
         return placePosition;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Player player = other.GetComponent<Player>();
+        if (player != null)
+            planeManager.AddScore(1);
     }
 
 }
