@@ -25,8 +25,18 @@ public class BaseController : MonoBehaviour
 
     }
 
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void HandleAction()
+    {
+
+    }
     protected virtual void Update()
     {
+        HandleAction();
         lookDirection = movementDirection.x != 0  || movementDirection.y != 0 ? new Vector2(movementDirection.x,movementDirection.y) : lookDirection;
         Rotate(lookDirection);
     }
